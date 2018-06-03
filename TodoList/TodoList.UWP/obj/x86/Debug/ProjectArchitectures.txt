@@ -1,0 +1,1 @@
+C:\Users\Pierre\source\repos\TodoList\TodoList\TodoList.UWP\TodoList.UWP.csproj;x86

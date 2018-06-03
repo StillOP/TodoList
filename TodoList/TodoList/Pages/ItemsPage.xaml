@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoList.Pages.ItemsPage"
+              xmlns:converters="clr-namespace:TodoList.Converters"
+             Title="Ma TodoList">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:IconConverter x:Key="IconConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Ajouter" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding ItemsCollection}"
+                VerticalOptions="FillAndExpand"
+                 HasUnevenRows="true" 
+                 IsPullToRefreshEnabled="true"
+                 CachingStrategy="RecycleElement"
+                 ItemSelected="ListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="20">
+                                <Label Text="{Binding text}" 
+                       LineBreakMode="NoWrap" 
+                       
+                       FontSize="14" />
+                                <Image Source="{Binding isDone, Converter={StaticResource IconConverter}}" HeightRequest="15" WidthRequest="15"  />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
